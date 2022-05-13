@@ -17,5 +17,9 @@ use App\Http\Controllers\json_controller;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::POST('/json', [json_controller::class, 'checkJson']);
-Route::GET('/json', [json_controller::class, 'checkJson']);
+
+
+Route::POST('/json', [json_controller::class, 'checkJson_GET']);
+
+
+Route::GET('/json', [json_controller::class, 'checkJson_GET']);

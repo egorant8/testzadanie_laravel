@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class json_controller extends Controller
 {
-    public function checkJson(Request $reg)
+    public function checkJson_GET(Request $reg)
     {
-            if(!isset($reg['json']) || !$reg['json']){
+            if(!isset($reg['texJSON']) || !$reg['texJSON']){
                 return json_encode(['status'=>'error']);
             }
             $depth = 1;
@@ -17,11 +17,11 @@ class json_controller extends Controller
                 $depth = $reg['depth'];
             }
             $count_podrazdelov = 1;
-            $data = json_decode($reg['json'], true);
+            $data = json_decode($reg['texJSON'], true);
             echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title></title></head>';
             if(isset($reg['background']))
             {
-                $background = $reg['background'];
+                $background = str_replace('; ', ', ', $reg['background']);;
 
                 echo '<body style="background: url('.$background.'); background-color:RGB'.$background.';">';
             }
